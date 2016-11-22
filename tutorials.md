@@ -39,3 +39,18 @@ Lesson 22: Backing Out Changes in Stage and the Working Directory
 removing the changes you made on staging or unstaging the changes you did on current file
 	git checkout -- (file to unstage)
 totally removing the changes you made in a file and will revert to clean branch
+
+Lesson 23: Git History and Creating Custom Git Commands with Aliases
+	git --oneline --graph --decorate --all
+--oneline
+	provides simplified commit entry, providing a lot of information in single line
+--graph
+	provides asterisk based graph denoting branching heirarchy
+--decorate
+	which commits are apart of which branch and other labels of reposity
+--all
+	provide the history of all branch
+	
+	 git config --global alias.hist "log --oneline --graph --decorate --all"
+provides a shortened alias for git log for this one its "hist"
+you can check it by typing "git config --global --list" to list all configuration info including our newly created alias. now you can just type git hist to retrieve your log info
