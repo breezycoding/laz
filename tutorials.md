@@ -54,3 +54,10 @@ Lesson 23: Git History and Creating Custom Git Commands with Aliases
 	 git config --global alias.hist "log --oneline --graph --decorate --all"
 provides a shortened alias for git log for this one its "hist"
 you can check it by typing "git config --global --list" to list all configuration info including our newly created alias. now you can just type git hist to retrieve your log info
+
+Lesson 24: Renaming and Deleting Files within Git
+	git mv(for move) (existing file) (new file name with extension)
+this rename the file to a new name mv stands for move
+	git rm(for remove) (name of file to be remove with extension)
+to totally remove the file. doing this on git has advantage since it will have a commit history.
+Dont for forget to commit for changes to take effect 100 percent
