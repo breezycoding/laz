@@ -25,3 +25,11 @@ Date:   Tue Nov 22 16:58:11 2016 +0800
 to show all logs from the beginning
 
 Lesson 21: Combining steps with express commits
+	git ls-files
+to check on current tracked files
+	touch (file to add)
+to add file on current folder
+	rm (file to delete)
+to delete a file
+	git -am "commit message"
+combination of git add and git commit with message
