@@ -33,3 +33,9 @@ to add file on current folder
 to delete a file
 	git -am "commit message"
 combination of git add and git commit with message
+
+Lesson 22: Backing Out Changes in Stage and the Working Directory
+	git reset HEAD (file to unstage)
+removing the changes you made on staging or unstaging the changes you did on current file
+	git checkout -- (file to unstage)
+totally removing the changes you made in a file and will revert to clean branch
