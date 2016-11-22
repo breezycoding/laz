@@ -13,3 +13,5 @@ Lesson 19:Going deeper with commits and messages
 to add all existing files on version control .(dot)
 	git commit
 to commit files and add message through notepad text editor since notepad is default text editor
+
+changes
