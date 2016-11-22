@@ -61,3 +61,9 @@ this rename the file to a new name mv stands for move
 	git rm(for remove) (name of file to be remove with extension)
 to totally remove the file. doing this on git has advantage since it will have a commit history.
 Dont for forget to commit for changes to take effect 100 percent
+
+Lesson 26: Excluding Unwanted Files from Git
+	(code editor) or notepad++ .gitignore
+-your code editior will pop up. type on one line the file you want to exclude ie. application.log to exclude application.log or wildcard expression to exclude all .log "*.log".
+
+-dont forget to add .gitignore then commit the gitignore file
