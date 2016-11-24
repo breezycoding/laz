@@ -67,3 +67,10 @@ Lesson 26: Excluding Unwanted Files from Git
 -your code editior will pop up. type on one line the file you want to exclude ie. application.log to exclude application.log or wildcard expression to exclude all .log "*.log".
 
 -dont forget to add .gitignore then commit the gitignore file
+
+Lesson 28: Comparing Changes (git diff/git tool)
+use git hist(alias for configured log)
+	git diff (log from git hist) HEAD
+to check the log history from the log you specify to current log which is HEAD keyword
+	git difflog (log from git hist) HEAD
+same functionality but uses p4merge
