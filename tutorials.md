@@ -74,3 +74,5 @@ use git hist(alias for configured log)
 to check the log history from the log you specify to current log which is HEAD keyword
 	git difflog (log from git hist) HEAD
 same functionality but uses p4merge
+
+lets branch
