@@ -88,5 +88,38 @@ branches are just labels of timeline so after you merge you can delete that bran
 	git branch -d (branch to delete)
 if you do "git hist" you can see that you no loger see the branch on commit id's.
 
+Lesson 32: Manual Merges and conflict resolution
+simulating the merging conflict
+create new branch 
+	git checkout -b (branch name)
+	git branch -a
+to check all branch including master, green highlight text means the current branch your working
+to simulate the conflict update the same line of code on both branches
+	git commit -am "commit message"
+express commit
+now you can merge the two branch
+	git merge (branch name- not the master)
+if theres a conflict automerging will complain denoting a conflict in master ie (master|MERGING)
+you can "cat" the file to output the whole content of file	
+	cat (file name)
+you can see the parts of file that have conflict.
+to merge the file you can use p4mergetool
+	git mergetool
+mergetool will popup and p4merge will show 3 way merge in progress.on 3 way merge you can see various version of file and possible solution at the bottom. choose the possible solution at the bottom then click save(second button ate the top left side of p4merge tool). now you can quit p4merge and commit the file you merge in.if commit is successful you will return to normal branch ie(master branch) when you do git status you can see .orig file .orig file is the original version. you can delete that file to avoid adding that to repository. 
+	rm (file to delete)
 
-line 94 will cause trouble on master
+Lesson 33: Marking important Milestones with tagging
+tagging means adding important message or version on your history
+	git tag (tag name)
+creates tag with name of tag only
+	git tag --list
+to check all tag. if you do git hist you cal also see the tag name along with HEAD and branch
+	git tag -d (tag name)
+to delete tag name
+	git tag -a (tag name) -m "message for this tag"
+to add tag with annotated information ie version of that tag
+
+to show the annotated information of tag
+	git show (tag name)
+you will see the author, date the id where the tag was created. basically this information is important if you want to note major milestone and you want to assciate some information about it.
+	
