@@ -75,4 +75,15 @@ to check the log history from the log you specify to current log which is HEAD k
 	git difflog (log from git hist) HEAD
 same functionality but uses p4merge
 
-lets branch
+Lesson 31: branching and simple merging easy paths
+	git branch
+to know how many branch we have on repository
+	git checkout -b updates
+to create branch and switch to that branch immediately. you can changes and commit to that branch. check if your on your branch updates. when you do "git hist" you can see the current branch your working at by "HEAD" keyword. to integrate the changes you made on branch you must switch first to the parent branch(master)
+	git checkout master
+to switch to master branch
+	git merge (name of branch) 
+to merge to "master" branch. this simple merge is called fast forward,pretending we never really switch branch from master in order to make updates. now if you type "git hist" you can see that "master" and "updates" are pointing at same commit id and HEAD thats called fast forward merge.
+branches are just labels of timeline so after you merge you can delete that branch.
+	git branch -d (branch to delete)
+if you do "git hist" you can see that you no loger see the branch on commit id's.
