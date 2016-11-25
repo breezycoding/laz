@@ -90,3 +90,4 @@ if you do "git hist" you can see that you no loger see the branch on commit id's
 
 
 
+I hope this isnt much of a problem
