@@ -88,7 +88,5 @@ branches are just labels of timeline so after you merge you can delete that bran
 	git branch -d (branch to delete)
 if you do "git hist" you can see that you no loger see the branch on commit id's.
 
-I hope this isnt much of a problem
 
-
-this will cause problem on verybad branch
+line 94 will cause trouble on master
