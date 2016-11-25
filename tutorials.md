@@ -90,3 +90,5 @@ if you do "git hist" you can see that you no loger see the branch on commit id's
 
 this is bound to cause trouble!!!
 
+
+line 94 will cause trouble on master
