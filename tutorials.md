@@ -87,3 +87,6 @@ to merge to "master" branch. this simple merge is called fast forward,pretending
 branches are just labels of timeline so after you merge you can delete that branch.
 	git branch -d (branch to delete)
 if you do "git hist" you can see that you no loger see the branch on commit id's.
+
+
+
