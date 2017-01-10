@@ -123,3 +123,4 @@ to show the annotated information of tag
 	git show (tag name)
 you will see the author, date the id where the tag was created. basically this information is important if you want to note major milestone and you want to assciate some information about it.
 	
+Lesson 35: Repository Time Travel With Reset and Reflog(undo bad commits)
