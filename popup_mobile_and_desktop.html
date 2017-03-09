@@ -1,0 +1,67 @@
+<style>
+/*darken background*/
+.overlay_bg{
+	background-color: rgba(0,0,0,0.6);
+	display:none;
+	position: fixed;
+	left: 0;
+	height: 100%;
+	top: 0;
+	transition: background-color 5s ease;
+	z-index: 5;
+	width: 100%;
+}
+.bg_active{display:block!important;}
+.bg_inactive{display:none!important;}
+.overlay_text{
+	background-color: #fff;
+	font-size: 13px;
+	position: relative;
+	height:500px;
+	margin: 0 auto;
+	margin-top:8.7%;
+	overflow-y: scroll;
+	padding: 25px;
+	width: 1143px;
+}
+.close_overlay{
+	float: right;
+	font-size: 28px;
+	cursor:pointer;
+	margin-top: -14px;
+	margin-right: -14px;
+}
+.close_overlay:hover, #overlay_clicker:hover{text-decoration:underline;}
+.overlay_text p {margin-bottom: 3px!important;}
+/*darken background*/
+
+/*overlay_clicker can be adjusted*/
+#overlay_clicker {
+	cursor: pointer;
+	color: #fff;
+	position: absolute;
+	right: 21%;
+	font-size: 25px;
+	top: 94.6%;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+	$(document).on("click", function(e) {
+		if (e.target.id == "overlay_clicker") {
+			$(".overlay_bg").removeClass("bg_inactive").addClass("bg_active");
+			$('body').append('.overlay_bg');
+		}else{
+			$(".overlay_bg").removeClass("bg_active").addClass("bg_inactive");
+		}
+	})
+});
+</script>
+<div class="overlay_bg">
+	<div class="overlay_text">
+		<h3 class="close_overlay">X</h3>
+	</div>
+</div>
+<!-- overlay_clicker can be adjusted -->
+<strong><p id="overlay_clicker">See complete mechanics</p></strong>
+<!-- my custom pop up works for mobile-->
