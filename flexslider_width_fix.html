@@ -1,0 +1,63 @@
+<style>
+/*flexslider css*/
+.flexslider{width:100%;}
+.cms-staticpage li{margin-left:0px!important;}
+.img_slides{width:100%;}
+.flex-control-nav.flex-control-paging{
+	bottom: 0px;
+	position: absolute;
+	left: 50%;
+}
+@media (max-width: 1199px){
+.flex-viewport {width: 100%!important;}
+	/*
+	catalog page
+	.flex-prev,.flex-next{top: 45%!important;}
+	.flex-control-nav.flex-control-paging {bottom: 44px!important;}
+	static page
+	.flex-prev{top: 45%!important;}
+	.flex-next{top:33%!important;}
+	*/
+	.flex-control-nav.flex-control-paging {bottom: 44px!important;}
+}
+@media (max-width: 1100px){
+	.flex-viewport {width: 100%!important;}
+	/*
+	catalog page
+	.flex-prev,.flex-next{top: 45%!important;}
+	static page
+	.flex-prev{top: 45%!important;}
+	.flex-next{top:33%!important;}
+	*/
+	.flex-control-nav.flex-control-paging {bottom: 44px!important;}
+}
+/*
+catalog page
+.flex-prev,.flex-next{top:51%;}
+static page
+.flex-prev{top:51%;}
+.flex-next{top:39%;}
+*/
+/*flexslider css*/
+</style>
+<div class="flexslider">
+	<ul class="slides">
+		<li>
+			<a href="">
+				<img class="img_slides" src="" class="slideshow-img">
+			</a>
+		</li>
+	</ul>
+</div>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/flexslider/2.5.0/jquery.flexslider-min.js'></script>
+<script>
+jquery11_1 = jQuery.noConflict( true );
+jquery11_1(document).ready(function(){
+	jquery11_1('.flexslider').flexslider({
+		animation: 'slide',
+		smoothHeight: true,
+		easing: 'swing'
+	});
+});
+</script>
