@@ -1,0 +1,46 @@
+<!-- 
+	code that covers whole image with text at the front
+-->
+<style type="text/css">
+.shop_more{
+	border:1px solid #fff;
+	color:#fff;
+	font-size:17px;
+	height:29px;
+	left:45.2%;
+	position:absolute;
+	padding-top:10px;
+	text-align:center;
+	top: 65.5%;
+	transition:all 0.5s ease-out;
+	visibility: hidden;
+	width: 141px;
+	z-index: 2;
+}
+.overlay_bgs{
+	background-color:#000;
+	left:0;
+	position: absolute;
+	opacity: 0;
+	height: 100%;
+	top: 0;
+	transition:all 0.5s ease-out;
+	visibility: hidden;
+	width: 100%;
+	z-index: 1;
+}
+.shop_more_wrap:hover > .shop_more{
+	transition:all 0.5s ease-in;
+	visibility: visible;
+}
+.shop_more_wrap:hover > .overlay_bgs{
+	opacity:0.4;
+	transition:all 0.5s ease-in;
+	visibility: visible;
+}
+</style>
+<div class="shop_more_wrap" style="position:relative;">
+	<img src="">
+	<div class="overlay_bgs"></div>
+	<div class="shop_more">SHOP MORE</div>
+</div>
