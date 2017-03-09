@@ -1,0 +1,22 @@
+<script type="text/javascript">
+'use strict'
+(function(global){
+	//main constructor object returning filtered/sorted params
+	var Person = function(param){
+		return new Person.init(param);
+	}
+	//main constructor object returning filtered/sorted params
+	Person.init = function(param){
+		var self = this;
+		self.param = param || 'empty params';
+	}
+	//prototype object from main constructor function Person.init()
+	Person.init.prototype = {
+		get_credential: function(){
+			console.dir(this.param);
+		}
+	}
+	global.chaining = Person;
+}(window));
+chaining(['param']).get_credential();
+</script>
