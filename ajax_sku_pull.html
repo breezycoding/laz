@@ -1,0 +1,23 @@
+<script type="text/javascript">
+
+/*category sku pull*/
+var json_data = $.ajax({
+	url:'/mobapi/(url)/?maxitems=20',
+	type:'get',
+	dataType:'json',
+	async:false
+}).responseText;
+
+/*catalog sku pull/individual*/
+var json_data = $.ajax({
+	url:'http://www.lazada.com.ph/catalog/ajaxGetSkus',
+	type:'get',
+	data: {skus:'OL364HBALANFANPH'},
+	dataType:'json',
+	async:false
+}).responseText;
+
+/*parsing will turn data into object which can be looped*/
+var parsed_data = JSON.parse(json_data);
+console.log(json_data.success);
+</script>
