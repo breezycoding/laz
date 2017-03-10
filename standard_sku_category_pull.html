@@ -1,0 +1,577 @@
+<!-- code explanation -->
+[STATIC_BLOCK: sku_cat_pull_js]
+
+<script>
+jquery11_1(document).ready(function() {
+	var sku__array = [
+		['sku__pull', '.wid_seven .sku-container', '.wid_seven', 'AS595ELAA6BAR8ANPH,LE611ELAA2S864ANPH', 5]
+		
+		/*['sku__pull', 'TARGET CLASS KUNG SAN NAKALAGAY YUNG SKUS', 'TARGET CLASS CAROUSEL, KUNG WALANG CAROUSEL LEAVE IT BLANK', 'SKUS', KUNG WALANG CAROUSEL LEAVE IT BLANK]*/
+	];
+
+	for (a = 0; a < sku__array.length; a++) {
+		$.getSku(sku__array[a][0], sku__array[a][1], sku__array[a][2], sku__array[a][3], sku__array[a][4]);
+	}
+
+	$.getSku_cat('cat__pull', '.wid_one .sku-container', '.wid_one', '/shop-gaming-desktops/', 10, 5);
+
+	/*$.getSku_cat('cat__pull', 'TARGET CLASS KUNG SAN NAKALAGAY YUNG SKUS', 'TARGET CLASS CAROUSEL, KUNG WALANG CAROUSEL LEAVE IT BLANK', 'TARGET URL', MAX ITEM, SETTINGS KUNG ILAN LALABAS SA CAROUSEL, KUNG WALANG CAROUSEL LEAVE IT BLANK);*/
+});
+</script>
+
+<!-- ONLY HTML FORMAT -->
+<div class="TARGET CLASS">
+	<div class="ANY CLASS OF YOUR CHOICE">
+		<div class="ANY CLASS OF YOUR CHOICE - THIS IS WHERE SKUS GOES loading <-- DEFAULT DONT CHANGE"></div>
+		<div class="wid_cont <-- DEFAULT DONT CHANGE">
+			<i class="TARGET CLASS_nav fa fa-angle-left"></i> <!-- yung class dito dapat same dun sa target class -->
+			<i class="TARGET CLASS_nav fa fa-angle-right"></i> <!-- yung class dito dapat same dun sa target class -->
+		</div>
+	</div>
+</div>
+<!-- code explanation -->
+
+
+<!-- whole code implementation -->
+
+<style type="text/css">
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+.slick-arrow {
+    position: absolute;
+    top: 40%;
+    font-size: 61px !important;
+    cursor: pointer;
+}
+.fa.fa-angle-left.slick-arrow {
+    left: 0%;
+}
+.fa.fa-angle-right.slick-arrow {
+    right: 0%;
+}
+.cms-staticpage li {
+    font-weight: normal;
+}
+a.dd:hover:after {
+    top: 40%;
+    opacity: 1;
+}
+.img-holder {
+    width: 200px;
+}
+.img-holder img {
+    width: 100%;
+}
+a.dd {
+    color: #333;
+    text-decoration: none;
+    height: 250px;
+    text-align: center;
+    position: relative;
+    margin-right: 20px;
+    padding: 10px;
+}
+a.dd:hover {
+    /*border: 1px solid gray;*/
+}
+a.dd .cat {
+    background: linear-gradient(to right, #cf2027 0%, #a91e23 100%);
+    color: #f0d019;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    width: 90%;
+    margin: 0 auto 5px
+}
+a.dd .img {
+    width: 100%;
+    height: 140px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+a.dd .title {
+    background: #FFF;
+    text-align: center;
+    font-size: 12px;
+    line-height: 22px;
+    height: 40px;
+    overflow: hidden;
+    padding: 10px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+a.dd .price {
+    position: relative;
+    float: left;
+    color: #888;
+    text-decoration: line-through;
+    padding-left: 15px;
+    font-size: 18px;
+    line-height: 25px;
+}
+a.dd .sprice {
+    position: relative;
+    font-size: 20px;
+    color: #FF0000;
+    text-align: left;
+    padding-left: 15px;
+    line-height: 25px;
+}
+a.dd .discount {
+    float: left;
+    color: #ffffff;
+    background: #CF2027;
+    padding: 3px;
+    margin-left: 7px;
+    text-indent: 5px;
+}
+.shopnow {
+    background: #0079c7;
+    width: 32%;
+    margin: 0 auto;
+    padding: 6px;
+    height: 20px;
+    border-radius: 18px;
+    color: white;
+    position: absolute;
+    bottom: 2px;
+    left: 97px;
+    font-weight: 700;
+}
+a.dd.avlble:after {
+    content: 'Buy now';
+    background: #F37540;
+}
+a.dd.not__avlble:after {
+    content: 'Out of Stock';
+    background: #c0c0c0;
+}
+a.dd:after {
+    position: absolute;
+    transition: all .5s ease;
+    width: 100%;
+    left: 0;
+    line-height: 35px;
+    color: #FFF;
+    top: 60%;
+    opacity: 0;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.cms-staticpage li {
+    margin-left: 0px!important;
+    font-weight: 400;
+}
+.loading {
+    background: url(http://th-live.slatic.net/cms/201701/loading.gif) center center no-repeat;
+    height: 270px;
+}
+/*== here ==*/
+
+.top-banner img {
+    width: 100%;
+}
+#wrap-fa img {
+    width: 100%;
+}
+.content-b img {
+    width: 100%;
+}
+.b3 {
+    width: calc(99.7%/2);
+    float: left;
+    margin-left: 5px;
+}
+.a4 {
+    width: calc(98.5%/4);
+    float: left;
+    margin-left: 5px;
+}
+/* second content */
+
+.content {
+    margin-top: 14px;
+}
+.second-a4 {
+    float: left;
+    width: calc(95.3%/4);
+    padding: 10px 10px 10px;
+    background: #f1f1f1;
+}
+.second-b4 {
+    float: left;
+    width: calc(94%/4);
+}
+/* third content */
+
+.third-b4 {
+    float: right;
+    width: calc(94%/4);
+}
+/* fourth content */
+
+.section {
+    height: 150px;
+}
+.banners table tr td img {
+    /* text-align: center; */
+    /* margin: 2px; */
+    
+    margin-left: 3px;
+    margin-Bottom: 5PX;
+}
+.carousel__tape-item.second {
+    width: 166px!important;
+}
+/* fifth content */
+/* sixth content */
+/****hover*****/
+
+#wrap-fa img:hover {
+    -webkit-filter: brightness(53%);
+    transition: all ease .3s;
+}
+.content-5.c5 div a {
+    position: relative
+}
+.content-5.c5 div a:after {
+    content: 'Shop Now';
+    color: #FFF;
+    position: absolute;
+    left: calc(50% - 80px);
+    top: calc(50% - 10px);
+    border: solid 3px;
+    width: 160px;
+    text-align: center;
+    height: 38px;
+    line-height: 38px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    transition: all .2s ease;
+    opacity: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    word-spacing: 3px;
+    font-weight: 200;
+}
+.content-5.c5 .a4 div a:after {
+    content: 'Shop Now';
+    color: #FFF;
+    position: absolute;
+    left: calc(50% - 80px);
+    top: calc(50% - 180x);
+    border: solid 3px;
+    width: 160px;
+    text-align: center;
+    height: 38px;
+    line-height: 38px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    transition: all .2s ease;
+    opacity: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    word-spacing: 3px;
+    font-weight: 200;
+}
+.content-5.c5 div a:hover:after {
+    opacity: 1;
+}
+.content-5.c5 img:hover {
+    -webkit-filter: brightness(83%);
+    transition: .8s;
+}
+/*== here ==*/
+/*== added ==*/
+
+.sku-container {
+    padding: 36px;
+}
+.wrap-container {
+    float: left;
+    position: relative;
+    width: 80%;
+}
+.img {
+    width: 20%;
+}
+.img-lft {
+    float: left;
+}
+.img-right {
+    float: right;
+}
+.wrapper.brand {
+    border: 1px solid #000000;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+.wid_cont {
+    display: none;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+[STATIC_BLOCK: sku_cat_pull_js]
+<!-- declare skus or cat -->
+<script>
+jquery11_1(document).ready(function() {
+	var sku__array = [
+		['sku__pull', '.wid_seven .sku-container', '.wid_seven', 'AS595ELAA6BAR8ANPH,LE611ELAA2S864ANPH', 5],
+		['sku__pull', '.wid_eight .sku-container', '.wid_eight', 'GI657ELAA3U8YEANPH,GI657ELAA5KL8OANPH', 5]
+	];
+
+	for (a = 0; a < sku__array.length; a++) {
+		$.getSku(sku__array[a][0], sku__array[a][1], sku__array[a][2], sku__array[a][3], sku__array[a][4]);
+	}
+
+	$.getSku_cat('cat__pull', '.wid_one .sku-container', '.wid_one', '/shop-gaming-desktops/', 10, 5);
+});
+</script>
+<div id="wrap-fa">
+    <!-- SKU SLIDER WIDGET -->
+    <div class="main-wrap">
+        <!-- widget one -->
+        <div class="wrapper brand wid_one">
+            <div class="main_cont">
+				<div class="wrap-container">
+					<div class="sku-container loading"></div>
+					<div class="wid_cont">
+						<i class="wid_one_nav fa fa-angle-left"></i>
+						<i class="wid_one_nav fa fa-angle-right"></i>
+					</div>
+				</div>				
+				<div class="img img-right">
+					<a href="">
+						<img src="">
+					</a>
+				</div>				
+            </div>
+        </div>
+		<div style="clear: both;"></div>
+        <!-- widget one -->
+		
+		<!-- widget seven -->
+        <div class="wrapper brand wid_seven">
+            <div class="main_cont">
+				<div class="img img-lft">
+					<img src="">
+				</div>
+				<div class="wrap-container">
+					<div class="sku-container loading"></div>
+					<div class="wid_cont">
+						<i class="wid_seven_nav fa fa-angle-left"></i>
+						<i class="wid_seven_nav fa fa-angle-right"></i>
+					</div>
+				</div>				
+            </div>
+        </div>
+		<div style="clear: both;"></div>
+        <!-- widget seven -->
+		<!-- widget eight -->
+        <div class="wrapper brand wid_eight">
+			<div class="main_cont">
+				<div class="wrap-container">
+					<div class="sku-container loading"></div>
+					<div class="wid_cont">
+						<i class="wid_eight_nav fa fa-angle-left"></i>
+						<i class="wid_eight_nav fa fa-angle-right"></i>
+					</div>
+				</div>
+				<div class="img img-right">
+					<img src="">
+				</div>							
+			</div>
+        </div>
+        <!-- widget eight -->
+    </div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script>
+var globalVar = {
+	isOperaMini : (navigator.userAgent.indexOf('Opera Mini') > -1),
+	isMobile :  $('body').hasClass('mobile'),
+	isIOS : /iPad|iPhone|iPod/.test(navigator.userAgent),
+};
+
+jquery11_1 = jQuery.noConflict( true );
+
+jquery11_1(document).ready(function(){
+
+	/*=== for category ===*/
+	$.getSku_cat = function(target, target__class, target__carousel, target__url, maxitems, slides__toshow){
+		$.ajax({
+			url: '/mobapi' + target__url + '?',
+			data: {
+				maxitems: maxitems,
+				hide_filters: 1
+			},
+			success: function($data, textStatus, jqXHR) {
+				$.each($data.metadata.results, function(k, v) {
+					var url = v.data.url;
+					var img = (v.images.length > 0) ? v.images[0].path : "";
+					var title = v.data.name;
+					var price = +v.data.price;
+					var sprice = +v.data.special_price;
+					var discount = v.data.max_saving_percentage;
+					var isOOS = v.data.quantity;
+					var sku = v.data.sku;
+					
+					$(target__class).append($.get__sku_html(url, img, title, price, sprice, discount, sku, isOOS, target));
+				});
+			},
+			error: function(jqXHR, exception) {
+				console.log('error');
+				console.log(jqXHR);
+			},
+			complete: function() {				
+				//if (!globalVar.isMobile){
+					//jquery11_1(target__class).slick($.getSliderSettings(target__carousel));		
+					jquery11_1(target__class).slick($.getSliderSettings(target__carousel, slides__toshow));						
+					
+				//}
+				
+				$('.wid_cont').show();
+				$(target__class).removeClass('loading');
+			}
+		});
+	}
+
+	/*=== for sku ===*/
+	$.getSku = function(target, target__class, target__carousel, skulists, slides__toshow){
+		$.ajax({
+			url: 'http://www.lazada.com.ph/catalog/ajaxGetSkus?',
+			data: { 
+				skus: skulists,
+				withWishlistInfo:0
+			},
+			success: function($data, textStatus, jqXHR) { 
+				
+				console.log($data);
+				
+				$.each($data.data, function(k,v){   
+					var url = "/" + v.link;
+					var title = v.meta.name;
+					var img = v.image + "-catalog.jpg";
+					var price = +v.meta.price;
+					var sprice = +v.meta.special_price;
+					var pprice = +v.meta.promotion_price;
+					var discount = v.meta.max_saving_percentage;
+					var isOOS = v.meta.isOOS;
+					var sku = v.meta.sku;
+					
+					$(target__class).append($.get__sku_html(url, img, title, price, sprice, discount, sku, isOOS, target, k));
+					
+				}); 
+			},
+			error: function (jqXHR, exception) {
+				console.log('error');
+				console.log(jqXHR);
+			},
+			complete: function(){
+				if (target__carousel != ''){
+					//if (!globalVar.isMobile){
+						jquery11_1(target__class).slick($.getSliderSettings(target__carousel, slides__toshow));			
+					//}				
+				}
+				
+				$('.wid_cont').show();
+				$(target__class).removeClass('loading');
+			}
+		});
+	}
+
+	$.getSliderSettings = function(carouselno, slideshow) {
+	
+		if (slideshow === ''){
+			slideshow = 5;
+		}
+		
+		return {
+			arrows: true,
+			infinite: true,
+			autoplaySpeed: 6e3,
+			autoplay: !0,
+			slidesToShow: slideshow,
+			slidesToScroll: 1,
+			prevArrow: $(carouselno).parent().find(carouselno + '_nav.fa.fa-angle-left'),
+			nextArrow: $(carouselno).parent().find(carouselno + '_nav.fa.fa-angle-right')  
+		}
+	}
+	
+	$.get__sku_html = function (url, img, title, price, sprice, discount, sku, isOOS, target, counter){
+		
+		url = url.replace("/mobapi","");
+		discount = ((price - sprice) / price) * 100;
+		
+		var html = "",
+			class__oos = "avlble";
+			
+		if (target === 'price__only'){
+			/*==== price only ====*/
+			html += "<a href='" + url + "' class='product-card__buy-now buy__now'></a>";
+			if(isNaN(sprice) || (sprice === 0)) {            
+				html += "<div class='product-card-nov11__price-only'>";
+				html += "₱ " + $.format__Price(price);
+				html += "</div>";
+			} else {           
+				html += "<div class='product-card-nov11__price-only'>";
+				html += "₱ " + $.format__Price(sprice);
+				html += "</div>";
+			}
+		} else if (target === 'img__price__only'){
+			/*==== image and price only ====*/
+			html += "<a class='dd' href='" + url + "' class='product-card__buy-now buy__now'>";
+			html += "<div class='img' style='background-image: url(" + img + ")'></div>";
+			html += "<div class='title'>" + title + "</div>";
+			if(isNaN(sprice) || (sprice === 0)) {            
+				html += "<div class='sprice'>";
+				html += "₱ " + $.format__Price(price);
+				html += "</div>";
+			} else {           
+				html += "<div class='sprice'>";
+				html += "₱ " + $.format__Price(sprice);
+				html += "</div>";
+			}
+			html += "</a>";		
+		} else {
+			/*==== for cat and sku pull ====*/
+			if (isOOS){
+				class__oos = "not__avlble";
+			}
+			
+			html += "<a class='dd " + class__oos + "' href='" + url + "'>";
+			html += "<div class='img' style='background-image: url(" + img + ")'></div>";
+			html += "<div class='title'>" + title + "</div>";
+		
+			if(isNaN(sprice) || (sprice == 0)  || (sprice == price)) {
+				html += "<div class='sprice nodc'>₱ " + $.format__Price(price) + "</div>";
+			} else {
+				html += "<div class='sprice'>₱ " + $.format__Price(sprice) + "</div>";
+				html += "<div class='price'>₱ " + $.format__Price(price) + "</div>";
+				html += "<div class='discount'>- " + discount.toFixed(0) + "%</div>";
+		
+			}
+			html += "</a>";
+			
+		}
+
+		return html;
+	}   
+
+	$.format__Price = function (num){
+		var p = num.toFixed(2).split(".");
+		return "" + p[0].split("").reverse().reduce(function(acc, num, i, orig) {
+			return num + (i && !(i % 3) ? "," : "") + acc;
+		}, "");
+	}
+});
+</script>
+<!-- whole code implementation -->
