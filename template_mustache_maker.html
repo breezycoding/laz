@@ -1,0 +1,225 @@
+<script>
+/* ip_lms_content is the json code below*/
+var contents_block =  [
+		{
+			"title":"",
+			"info":"",
+			"content":"<p class='ind_1'></p>"+
+						"<p></p>"
+		}
+		},
+		{
+			"title":"",
+			"info":"",
+			"content":	""
+];
+/* ip_lms_content is the json code below*/
+</script>
+[STATIC_BLOCK: boostrap_min_css]
+[STATIC_BLOCK: ip_lms_content]
+<style type="text/css">
+.header__breadcrumb{display:none;}
+.wrapper_content{
+	background-color:#0c0c0c;
+        color:#fff;
+}
+.wrapper_content p:first-child {padding-top: 10px;}
+.wrapper_content p{
+    padding-left: 10px;
+    margin-bottom: 2px!important;
+}
+.ind_1{text-indent:1em;}
+.ind_2{text-indent:2em;}
+.ind_3{text-indent:3em;}
+.ind_4{text-indent:4em;}
+.ind_5{text-indent:5em;}
+.ind_6{text-indent:6em;}
+.answers_column{display:none;}
+/*css for speech bubbles*/
+.bubble{
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    box-shadow: 0 0 6px #B2B2B2;
+    display: inline-block;
+    padding: 10px 18px;
+    position: relative;
+    vertical-align: top;
+}
+
+.bubble::before {
+    background-color: #F2F2F2;
+    content: "\00a0";
+    display: block;
+    height: 16px;
+    position: absolute;
+    top: 11px;
+    transform:             rotate( 29deg ) skew( -35deg );
+        -moz-transform:    rotate( 29deg ) skew( -35deg );
+        -ms-transform:     rotate( 29deg ) skew( -35deg );
+        -o-transform:      rotate( 29deg ) skew( -35deg );
+        -webkit-transform: rotate( 29deg ) skew( -35deg );
+    width:  20px;
+}
+
+.me {
+    float: left;   
+    margin: 5px 45px 5px 20px;         
+}
+
+.me::before {
+    box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4 );
+    left: -9px;           
+}
+/*css for speech bubbles*/
+</style>
+<script type="text/javascript">
+	/*var answer_popup = prompt("Enter the code");
+	var answer_test = /[?*^](RaC)[->]\>/.test(answer_popup);
+	if(answer_test){
+		alert("you're in!");
+	}else{
+		alert("you dont know a thing");
+		window.location.replace("/"); 
+	}*/
+	(function(global){
+	
+		//constructor function returning main object Person.init
+		var Vault = function(first_param){
+			return new Vault.init(first_param);
+		}
+		
+		//main constructor object returning filtered/sorted params
+		Vault.init = function(first_param){
+			var self = this;
+			self.first_param = first_param || "empty params";
+		}
+		
+		//prototype object from main constructor function Person.init()
+		Vault.init.prototype = {
+			question_storage:{"q_storage":[]},
+			external_content:"",
+			render_template:function(template,external_content){
+				return Mustache.render(template, external_content);
+			},
+			get_question:function(){
+				var new_arr = this.question_storage.q_storage.map(function(x){ return x.toLowerCase() });
+				return _.contains(new_arr,this.first_param.toLowerCase());
+			},
+			get_content:function(first_param,contents){
+				this.external_content = _.find(contents, function(object){ 
+					 return first_param === object.title.toLowerCase();
+				});
+				var template = $(".answer_tpl").children().attr("id");
+				if($(".answer_tpl div").length === 0){
+					$(".answer_tpl").append(this.render_template($("#"+template).html(),this.external_content));
+				}else{
+					$(".answer_tpl div:nth-child(2), .answer_tpl div:nth-child(3), .answer_tpl div:nth-child(4)").remove();
+					$(".answer_tpl").append(this.render_template($("#"+template).html(),this.external_content));
+				}
+			},
+			check_question:function(contents){
+				if (this.question_storage.q_storage.length === 0) {
+					for(var key in contents){
+						this.question_storage.q_storage.push(contents[key].title);
+					}
+				}
+				if(this.get_question()){
+					alert("Great heres the answer");
+					$(".answers_column").css("display","block");
+					this.get_content(this.first_param.toLowerCase(),contents);
+				}else{
+					alert("Your question is not on list, please see list of question");
+					var template = $("#question_list_tpl").html();
+					var rendered = Mustache.render(template, this.question_storage);
+					if($(".question_list_tpl ul").length === 0){
+						$(".question_list_tpl").html(rendered);
+					}
+					this.disable_form();
+				}
+			},
+			question:function(contents){
+				this.check_question(contents);
+			}
+		}
+		
+		//custom prototypes for form disable
+		Vault.init.prototype.disable_form = function(){
+			$(".q_need").attr('value','See list of topics below.');
+			$(".q_need").prop('disabled', true);
+			$(".q_need").css({
+				"background-color":"#DCDAD1",
+				"opacity":"0.4"
+			});
+		}
+		
+		global.lms = Vault;
+	}(window));
+	
+	$(document).ready(function(){
+		$(".q_need").keypress(function(e){ 
+			if(e.which == 13){
+				var question = $(".q_need").val();
+				if(question !== ""){
+					lms(question).question(contents_block);
+					$(".questions").on("click",function(){
+						var q_id = $(this).attr("id");
+						lms(q_id).question(contents_block);
+						$(".answers_column").css("display","block");
+					});
+				}else{
+					alert("Question cannot be empty");
+				}	
+				return false;
+			}
+		});
+		$(".reset").on("click",function(){
+			$("div.answers_column").hide();
+		});
+		$(".info").on("click",function(){
+			$(".info_content").slideToggle();
+		});
+		$(".codes").on("click",function(){
+			$(".wrapper_content").slideToggle();
+		});
+	})
+</script>
+<div style="margin-top:-40px;word-spacing:0em;letter-spacing:0em;" class="container">
+	<div class="row">
+		<div class="col-xs-6 col-md-4">
+			<div class="row">
+				<div class="form-group">
+					<input class="q_need form-control" type="text" name="question" placeholder="What do you need?">
+				</div>
+			</div>
+			<div class="row question_list_tpl">
+				<script id="question_list_tpl" type="text/template">
+					<ul>
+					{{#q_storage}}
+						<li><a href="#" class="questions" id="{{.}}">{{.}}</a></li>
+					{{/q_storage}}
+					</ul>
+				</script>
+			</div>
+		</div>
+		<div class="well col-xs-12 col-sm-6 col-md-8 answers_column">
+			<button style="margin-bottom:5px;" type="button" class="info btn btn-info pull-left">INFO</button>
+			<button style="margin-bottom:5px;margin-left: 252px;" type="button" class="codes btn btn-primary pull-left">CODES</button>
+			<button style="margin-bottom:5px;" type="button" class="reset btn btn-danger pull-right">RESET</button>
+			<div class="clearfix"></div>
+			<div class="answer_tpl">
+				<script id="answer_tpl" type="text/template">
+					<div style="display:none;" class="info_content">
+						<div class="chat">
+							<div class="bubble me">{{{info}}}</div>
+						</div>
+					</div>
+					<div style="margin-bottom:-10px;margin-top: -15px;" class="bg-info text-center">
+						<h3 style="padding:5px 0px;">Subject: {{{title}}}</h3>
+					</div>
+					<div style="display:none;" class="wrapper_content" >{{{content}}}</div>
+				</script>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="clear:both;"></div>
