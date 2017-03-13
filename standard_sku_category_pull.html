@@ -33,7 +33,6 @@ jquery11_1(document).ready(function() {
 
 
 <!-- whole code implementation -->
-
 <style type="text/css">
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
@@ -172,7 +171,6 @@ a.dd:after {
     height: 270px;
 }
 /*== here ==*/
-
 .top-banner img {
     width: 100%;
 }
@@ -193,7 +191,6 @@ a.dd:after {
     margin-left: 5px;
 }
 /* second content */
-
 .content {
     margin-top: 14px;
 }
@@ -208,13 +205,11 @@ a.dd:after {
     width: calc(94%/4);
 }
 /* third content */
-
 .third-b4 {
     float: right;
     width: calc(94%/4);
 }
 /* fourth content */
-
 .section {
     height: 150px;
 }
@@ -231,7 +226,6 @@ a.dd:after {
 /* fifth content */
 /* sixth content */
 /****hover*****/
-
 #wrap-fa img:hover {
     -webkit-filter: brightness(53%);
     transition: all ease .3s;
@@ -290,14 +284,15 @@ a.dd:after {
 }
 /*== here ==*/
 /*== added ==*/
-
 .sku-container {
     padding: 36px;
 }
 .wrap-container {
     float: left;
     position: relative;
-    width: 80%;
+/*change to 100% if slider is full width*/
+    //width: 80%;
+	width:100%;
 }
 .img {
     width: 20%;
@@ -323,14 +318,12 @@ a.dd:after {
 <script>
 jquery11_1(document).ready(function() {
 	var sku__array = [
-		['sku__pull', '.wid_seven .sku-container', '.wid_seven', 'AS595ELAA6BAR8ANPH,LE611ELAA2S864ANPH', 5],
+		['sku__pull', '.wid_seven .sku-container', '.wid_seven', 'AS595ELAA6BAR8ANPH,LE611ELAA2S864ANPH', 2],
 		['sku__pull', '.wid_eight .sku-container', '.wid_eight', 'GI657ELAA3U8YEANPH,GI657ELAA5KL8OANPH', 5]
 	];
-
 	for (a = 0; a < sku__array.length; a++) {
 		$.getSku(sku__array[a][0], sku__array[a][1], sku__array[a][2], sku__array[a][3], sku__array[a][4]);
 	}
-
 	$.getSku_cat('cat__pull', '.wid_one .sku-container', '.wid_one', '/shop-gaming-desktops/', 10, 5);
 });
 </script>
@@ -346,23 +339,24 @@ jquery11_1(document).ready(function() {
 						<i class="wid_one_nav fa fa-angle-left"></i>
 						<i class="wid_one_nav fa fa-angle-right"></i>
 					</div>
-				</div>				
-				<div class="img img-right">
+				</div>
+				<!-- if theres an image, change style .wrap-container to 80% -->
+				<!-- <div class="img img-right"> 
 					<a href="">
 						<img src="">
 					</a>
-				</div>				
+				</div>	-->		
             </div>
         </div>
 		<div style="clear: both;"></div>
         <!-- widget one -->
-		
 		<!-- widget seven -->
         <div class="wrapper brand wid_seven">
             <div class="main_cont">
-				<div class="img img-lft">
+				<!-- if theres an image, change style .wrap-container to 80% -->
+				<!-- <div class="img img-lft">
 					<img src="">
-				</div>
+				</div> -->
 				<div class="wrap-container">
 					<div class="sku-container loading"></div>
 					<div class="wid_cont">
@@ -384,11 +378,13 @@ jquery11_1(document).ready(function() {
 						<i class="wid_eight_nav fa fa-angle-right"></i>
 					</div>
 				</div>
-				<div class="img img-right">
+				<!-- if theres an image, change style .wrap-container to 80% -->
+				<!-- <div class="img img-right">
 					<img src="">
-				</div>							
+				</div> -->					
 			</div>
         </div>
+		<div style="clear: both;"></div>
         <!-- widget eight -->
     </div>
 </div>
